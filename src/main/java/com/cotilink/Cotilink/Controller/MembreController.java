@@ -43,9 +43,9 @@ public class MembreController {
         return ResponseEntity.ok(updatedMembre);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMembre(@PathVariable Long id) {
-        membreService.deleteMembre(id);
-        return ResponseEntity.noContent().build();
-    }
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<Void> deleteMembre(@PathVariable Long id) {
+    //     membreService.deleteMembre(id);
+    //     return ResponseEntity.noContent().build();
+    // }
 }

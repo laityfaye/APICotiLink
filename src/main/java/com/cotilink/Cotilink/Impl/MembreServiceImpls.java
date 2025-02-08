@@ -115,16 +115,16 @@ public class MembreServiceImpls implements MembreService {
        return updatedMembre;
    }
 
-   @Override
-   public void deleteMembre(Long id) {
-       log.info("Suppression du membre avec l'ID: {}", id);
-       if (!membreRepository.existsById(id)) {
-           log.error("Aucun membre trouvé avec l'ID: {}", id);
-           throw new IllegalArgumentException("Aucun membre trouvé avec l'ID: " + id);
-       }
-       membreRepository.deleteById(id);
-       log.info("Membre supprimé avec succès");
-    }
+//    @Override
+//    public void deleteMembre(Long id) {
+//        log.info("Suppression du membre avec l'ID: {}", id);
+//        if (!membreRepository.existsById(id)) {
+//            log.error("Aucun membre trouvé avec l'ID: {}", id);
+//            throw new IllegalArgumentException("Aucun membre trouvé avec l'ID: " + id);
+//        }
+//        membreRepository.deleteById(id);
+//        log.info("Membre supprimé avec succès");
+//     }
    
    
 }

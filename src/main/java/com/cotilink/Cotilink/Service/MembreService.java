@@ -10,6 +10,6 @@ public interface MembreService {
     MembreDTO AddMembre(MembreDTO dto);
     MembreDTO getMembreById(Long id);
     Membre updateMembre(Long id, MembreDTO dto);
-    void deleteMembre(Long id);
+    // void deleteMembre(Long id);
 
 }

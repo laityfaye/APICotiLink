@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS membre;
-
-CREATE TABLE membre (
+-- Créer la table si elle n'existe pas
+CREATE TABLE IF NOT EXISTS membre (
   mbr_id SERIAL PRIMARY KEY,
   prenom VARCHAR(250) NOT NULL,
   nom VARCHAR(250) NOT NULL,
@@ -12,7 +11,8 @@ CREATE TABLE membre (
   mbr_disabled BOOLEAN DEFAULT FALSE
 );
 
-INSERT INTO membre (prenom, nom, addresse, date_integration, telephone, password, role, mbr_disabled) 
-VALUES 
-('Laity', 'Faye', 'Thies', '2025-02-03', '780186229', 
-'$2y$10$kp1V7UYDEWn17WSK16UcmOnFd1mPFVF6UkLrOOCGtf24HOYt8p1iC', 'ADMIN', FALSE);
+-- Insérer un enregistrement uniquement si la table est vide
+INSERT INTO membre (prenom, nom, addresse, date_integration, telephone, password, role, mbr_disabled)
+SELECT 'Laity', 'Faye', 'Thies', '2025-02-03', '780186229', 
+       '$2y$10$kp1V7UYDEWn17WSK16UcmOnFd1mPFVF6UkLrOOCGtf24HOYt8p1iC', 'ADMIN', FALSE
+WHERE NOT EXISTS (SELECT 1 FROM membre);

@@ -1,12 +1,9 @@
 package com.cotilink.Cotilink.Model;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
+import java.util.List;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -36,7 +33,7 @@ public class Membre {
     @Column(name = "telephone", unique = true, nullable = false, length = 250)
     private String telephone;
 
-    @Column(name ="password", nullable = false, length = 250)
+    @Column(name = "password", nullable = false, length = 250)
     private String password;
 
     @Column(name = "role", nullable = false, length = 250)
@@ -44,4 +41,8 @@ public class Membre {
 
     @Column(name = "mbr_disabled", nullable = false, columnDefinition = "boolean default false")
     private Boolean disabled = false; 
+
+    // Relation avec CotisationMensuelle
+    @OneToMany(mappedBy = "membre", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CotisationMensuelle> cotisations;
 }
