@@ -26,9 +26,12 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/api/membres**").hasRole("ADMIN");
                     auth.requestMatchers("/api/cotisations/valider/{cotisationId}").hasRole("ADMIN"); // Permettre l'accès à la connexion
                     auth.requestMatchers("/api/cotisations/notifications/retard").hasRole("ADMIN");
-                    auth.requestMatchers("/api/membres**").hasRole("ADMIN");
+                    auth.requestMatchers("/api/evenements/creer").hasRole("ADMIN");
+                    auth.requestMatchers("/api/evenements/modifier").hasRole("ADMIN");
+                    auth.requestMatchers("/api/evenements/supprimer").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .httpBasic(Customizer.withDefaults()) 
